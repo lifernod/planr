@@ -1,8 +1,8 @@
 mod entity;
 pub use entity::*;
+pub mod controller;
 mod dto;
-mod service;
-pub use service::*;
+pub mod service;
 
 pub struct UserFull {
     pub entity: UserEntity,

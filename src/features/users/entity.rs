@@ -1,9 +1,10 @@
 use chrono::{DateTime, Utc};
 use rust_decimal::Decimal;
+use serde::{Deserialize, Serialize};
 use sqlx::prelude::{FromRow, Type};
 use uuid::Uuid;
 
-#[derive(Type, PartialEq, Eq, Hash)]
+#[derive(Type, PartialEq, Eq, Hash, Clone, Copy)]
 #[sqlx(transparent)]
 pub struct UserId(pub Uuid);
 
@@ -25,7 +26,7 @@ impl From<UserId> for Uuid {
     }
 }
 
-#[derive(Default, Type)]
+#[derive(Default, Type, Deserialize, Serialize)]
 #[sqlx(type_name = "e_user_visibility", rename_all = "UPPERCASE")]
 pub enum UserVisibility {
     #[default]
