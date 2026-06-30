@@ -1,7 +1,7 @@
 mod entity;
 pub use entity::*;
 pub mod controller;
-mod dto;
+pub(super) mod dto;
 pub mod service;
 
 pub struct UserFull {
