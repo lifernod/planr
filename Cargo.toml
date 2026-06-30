@@ -1,0 +1,31 @@
+[package]
+name = "planr"
+version = "0.1.0"
+edition = "2024"
+
+[package.metadata.sqlx]
+migrations = "migrations"
+
+[profile.dev]
+opt-level = 0
+debug = true
+incremental = true
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = 3
+debug = false
+incremental = false
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = "none"
+
+[dependencies]
